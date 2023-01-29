@@ -1,0 +1,20 @@
+[
+  {
+    "name": "John Doe",
+    "slug": "john-doe",
+    "inviter": "a",
+    "isGroup": false
+  },
+  {
+    "name": "Some Group",
+    "slug": "some-group",
+    "inviter": "a",
+    "isGroup": true
+  },
+  {
+    "name": "Jane Doe",
+    "slug": "jane-doe",
+    "inviter": "b",
+    "isGroup": false
+  }
+]

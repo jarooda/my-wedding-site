@@ -1,0 +1,27 @@
+import { reactive } from 'vue'
+import { defineStore } from 'pinia'
+
+declare type Invitee = {
+  name: string
+  slug: string
+  inviter: string
+  isGroup: boolean
+}
+
+export const useUserStore = defineStore('user', () => {
+  const invitee = reactive<Invitee>({
+    name: '',
+    slug: '',
+    inviter: '',
+    isGroup: false
+  })
+
+  function assignInvitee (payload: Invitee) {
+    invitee.name = payload.name
+    invitee.slug = payload.slug
+    invitee.inviter = payload.inviter
+    invitee.isGroup = payload.isGroup
+  }
+
+  return { invitee, assignInvitee }
+})
