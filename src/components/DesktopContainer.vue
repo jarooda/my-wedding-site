@@ -8,6 +8,7 @@ import ProfileWrapper from '@/components/profile/ProfileWrapper.vue'
 import EventWrapper from '@/components/event/EventWrapper.vue'
 import GalleryWrapper from '@/components/gallery/GalleryWrapper.vue'
 import ChatWrapper from '@/components/chat/ChatWrapper.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 const groomNickname = import.meta.env.VITE_GROOM_NICKNAME
 const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
@@ -169,8 +170,9 @@ onMounted(() => {
       <div class="section-container centered-flex gallery-position">
         <GalleryWrapper />
       </div>
-      <div class="section-container centered-flex chat-position">
+      <div class="section-container chat-container chat-position">
         <ChatWrapper />
+        <TheFooter />
       </div>
     </div>
   </div>
@@ -244,5 +246,12 @@ $height: 832px;
   @media screen and (min-width: $longScreen) {
     left: calc($longScreen * 4);
   }
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

@@ -26,17 +26,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="chat-wrapper pt-11">
-    <ChatList :messages="messages" />
+  <div class="chat-wrapper p-5">
     <ChatInput @send="sendMessage" />
+    <ChatList :messages="messages" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .chat-wrapper {
   display: flex;
-  justify-content: center;
-  gap: 48px;
+  flex-direction: column;
+  gap: 24px;
   width: 100%;
 }
 </style>

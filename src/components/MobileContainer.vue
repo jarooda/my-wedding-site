@@ -3,6 +3,8 @@ import HeadingTitle from '@/components/title/HeadingTitle.vue'
 import MProfileWrapper from '@/components/profile/MProfileWrapper.vue'
 import MEventWrapper from '@/components/event/MEventWrapper.vue'
 import MGalleryWrapper from '@/components/gallery/MGalleryWrapper.vue'
+import MChatWrapper from '@/components/chat/MChatWrapper.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 const groomNickname = import.meta.env.VITE_GROOM_NICKNAME
 const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
@@ -21,9 +23,8 @@ const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
     <MProfileWrapper />
     <MEventWrapper />
     <MGalleryWrapper />
-    <div class="section-container">
-      WIP Chatbox
-    </div>
+    <MChatWrapper />
+    <TheFooter />
   </div>
 </template>
 
