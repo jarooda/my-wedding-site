@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user', () => {
     isGroup: false
   })
 
-  function assignInvitee (payload: Invitee) {
+  function assignInvitee(payload: Invitee) {
     invitee.name = payload.name
     invitee.slug = payload.slug
     invitee.inviter = payload.inviter

@@ -1,4 +1,13 @@
-# .
+# Wedding Site by Jalu Wibowo Aji
+
+## To Do Lists
+
+- [x] Create Desktop Version
+- [x] Create Mobile Version
+- [ ] Create Chatbox
+- [ ] Implement Guest Query
+- [ ] Improve Meta Tag
+- [ ] Improve Animation
 
 This template should help get you started developing with Vue 3 in Vite.
 

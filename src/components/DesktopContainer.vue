@@ -9,6 +9,9 @@ import EventWrapper from '@/components/event/EventWrapper.vue'
 import GalleryWrapper from '@/components/gallery/GalleryWrapper.vue'
 import ChatWrapper from '@/components/chat/ChatWrapper.vue'
 
+const groomNickname = import.meta.env.VITE_GROOM_NICKNAME
+const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
+
 gsap.registerPlugin(ScrollTrigger)
 const extraLongContainer = ref<any>(null)
 const leftCorner = ref<any>(null)
@@ -100,18 +103,6 @@ onMounted(() => {
 
     return t4
   }
-  function profile1End() {
-    const t4 = gsap.timeline({
-      scrollTrigger: getScrollTriggerLeft('#profile-salaam', 'left 50px')
-    })
-    t4.to('#profile-salaam', {
-      opacity: 0,
-      left: -300,
-      duration: 4
-    })
-
-    return t4
-  }
   function profile2() {
     const t5 = gsap.timeline({
       scrollTrigger: getScrollTriggerRight('#profile-greetings-1', 'left 50%')
@@ -120,18 +111,6 @@ onMounted(() => {
       opacity: 0,
       top: -230,
       right: -100,
-      duration: 10
-    })
-
-    return t5
-  }
-  function profile2End() {
-    const t5 = gsap.timeline({
-      scrollTrigger: getScrollTriggerLeft('#profile-greetings-1', 'left 50px')
-    })
-    t5.to('#profile-greetings-1', {
-      opacity: 0,
-      left: -300,
       duration: 10
     })
 
@@ -150,18 +129,6 @@ onMounted(() => {
 
     return t6
   }
-  function profile3End() {
-    const t6 = gsap.timeline({
-      scrollTrigger: getScrollTriggerLeft('#profile-greetings-2', 'left 50px')
-    })
-    t6.to('#profile-greetings-2', {
-      opacity: 0,
-      left: -300,
-      duration: 16
-    })
-
-    return t6
-  }
   // SECTION PROFILE - END ANIMATION
 
   gsap
@@ -172,13 +139,8 @@ onMounted(() => {
     .add(profile1())
     .add(profile2())
     .add(profile3())
-    //.add(profile1End())
-    //.add(profile2End())
-    //.add(profile3End())
 })
 
-const groomNickname = import.meta.env.VITE_GROOM_NICKNAME
-const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
 </script>
 
 <template>
@@ -189,13 +151,13 @@ const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
           ref="leftCorner"
           id="title-text-1"
           :text="brideNickname"
-          class="mb-11 mr-10 title-animation"
+          class="mb-11 mr-10"
         />
-        <HeadingTitle id="title-text-2" text="&" class="title-animation" />
+        <HeadingTitle id="title-text-2" text="&" />
         <HeadingTitle
           id="title-text-3"
           :text="groomNickname"
-          class="mt-11 ml-10 title-animation"
+          class="mt-11 ml-10"
         />
       </div>
       <div class="section-container centered-flex profile-position">
@@ -271,14 +233,14 @@ $height: 832px;
 
 .gallery-position {
   left: calc(100vw * 3);
-  
+
   @media screen and (min-width: $longScreen) {
     left: calc($longScreen * 3);
   }
 }
 .chat-position {
   left: calc(100vw * 4);
-  
+
   @media screen and (min-width: $longScreen) {
     left: calc($longScreen * 4);
   }

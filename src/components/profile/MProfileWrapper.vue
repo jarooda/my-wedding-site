@@ -29,12 +29,12 @@ const bride = ref({
 </script>
 
 <template>
-  <div class="profile-wrapper">
-    <div class="greetings mb-9">
-      <p id="profile-salaam" class="salaam mb-7">
+  <div class="profile-wrapper p-5">
+    <div class="greetings mb-9 responsive">
+      <p id="profile-salaam" class="salaam mb-7 responsive">
         Assalamu’alaikum Warahmatullahi Wabarakatuh
       </p>
-      <p id="profile-greetings-1" class="mb-5">
+      <p id="profile-greetings-1" class="mb-5 responsive">
         Maha suci Allah SWT yang telah menciptakan makhluk-Nya
         berpasang-pasangan.
       </p>
@@ -45,7 +45,7 @@ const bride = ref({
     </div>
     <div class="pair-container">
       <PairCard gender="female" :profile="bride" />
-      <FlippingImage class="mx-10" size="300px" />
+      <FlippingImage class="my-8" size="100px" />
       <PairCard gender="male" :profile="groom" />
     </div>
   </div>
@@ -58,14 +58,16 @@ const bride = ref({
 }
 .greetings {
   font-family: $normal;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
+
   .salaam {
     font-style: italic;
   }
 }
 .pair-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 </style>

@@ -12,5 +12,9 @@ const props = defineProps<{
 .heading-title {
   font-family: $cursive;
   font-size: 128px;
+
+  @media screen and (max-width: $media-medium) {
+    font-size: 96px;
+  }
 }
 </style>

@@ -1,19 +1,19 @@
 $values:
-  "-3" -8px,
-  "-2" -4px,
-  "-1" -2px,
-  "1" 2px,
-  "2" 4px,
-  "3" 8px,
-  "4" 12px,
-  "5" 16px,
-  "6" 24px,
-  "7" 32px,
-  "8" 40px,
-  "9" 48px,
-  "10" 64px,
-  "11" 128px,
-  "12" 256px;
+  "-3" -8px 0,
+  "-2" -4px 0,
+  "-1" -2px 0,
+  "1" 2px 0,
+  "2" 4px 2px,
+  "3" 8px 4px,
+  "4" 12px 8px,
+  "5" 16px 12px,
+  "6" 24px 16px,
+  "7" 32px 24px,
+  "8" 40px 32px,
+  "9" 48px 40px,
+  "10" 64px 48px,
+  "11" 128px 64px,
+  "12" 256px 128px,;
 
 /*
   1. Helper
@@ -60,29 +60,66 @@ $values:
 }
 
 /* 2. Margin */
-@each $identifier, $size in $values {
+@each $identifier, $size, $smallSize in $values {
   .m-#{$identifier} {
     margin: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin: $smallSize;
+      }
+    }
   }
   .mt-#{$identifier} {
     margin-top: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin-top: $smallSize;
+      }
+    }
   }
   .mr-#{$identifier} {
     margin-right: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin-right: $smallSize;
+      }
+    }
   }
   .mb-#{$identifier} {
     margin-bottom: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin-bottom: $smallSize;
+      }
+    }
   }
   .ml-#{$identifier} {
     margin-left: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin-left: $smallSize;
+      }
+    }
   }
   .mx-#{$identifier} {
     margin-left: $size;
     margin-right: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin-left: $smallSize;
+        margin-right: $smallSize;
+      }
+    }
   }
   .my-#{$identifier} {
     margin-top: $size;
     margin-bottom: $size;
+    ~ &.responsive {
+      @media screen and (max-width: $media-medium) {
+        margin-top: $smallSize;
+        margin-bottom: $smallSize;
+      }
+    }
   }
 }
 

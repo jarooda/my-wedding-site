@@ -13,8 +13,6 @@ const cardTitle = computed(() => {
   }
 })
 
-
-
 const fullDate = computed(() => {
   if (props.date === 'first') {
     const [date, day, month, year] = import.meta.env.VITE_DATE_FIRST.split(' ')
@@ -47,7 +45,7 @@ const place = computed(() => {
 
 const isFlipping = ref(false)
 
-const iFrameData = computed (() => {
+const iFrameData = computed(() => {
   if (props.date === 'first') {
     return import.meta.env.VITE_GMAPS_FIRST
   } else {
@@ -61,7 +59,7 @@ const iFrameData = computed (() => {
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <div class="event-card-wrapper">
-          <h1 class="title mb-5">{{ cardTitle }}</h1>
+          <h1 class="title mb-5 responsive">{{ cardTitle }}</h1>
           <div class="separator" />
           <div class="date-wrapper">
             <div class="date-wrapper-top">
@@ -74,21 +72,31 @@ const iFrameData = computed (() => {
             <h3 class="mt--3">{{ fullDate.year }}</h3>
           </div>
           <div class="separator mt-3" />
-          <p class="time mt-6">{{ time }}</p>
-          <div class="address-wrapper mt-6">
-            <div class="address mb-2">
-              <img src="@/assets/icons/marker.svg" alt="marker" class="mr-3">
-              <p >{{ place.address }}</p>
+          <p class="time mt-6 responsive">{{ time }}</p>
+          <div class="address-wrapper mt-6 responsive">
+            <div class="address mb-2 responsive">
+              <img src="@/assets/icons/marker.svg" alt="marker" class="mr-3" />
+              <p>{{ place.address }}</p>
             </div>
             <p>{{ place.region }}</p>
           </div>
-          <button class="button-primary naked-button mt-6" @click="isFlipping = true">Google Maps</button>
+          <button
+            class="button-primary naked-button mt-6 responsive"
+            @click="isFlipping = true"
+          >
+            Google Maps
+          </button>
         </div>
       </div>
       <div class="flip-card-back">
         <div class="event-card-wrapper">
           <div v-html="iFrameData" />
-          <button class="button-primary naked-button mt-6" @click="isFlipping = false">Event</button>
+          <button
+            class="button-primary naked-button mt-6 responsive"
+            @click="isFlipping = false"
+          >
+            Event
+          </button>
         </div>
       </div>
     </div>
@@ -102,6 +110,10 @@ const iFrameData = computed (() => {
   width: 300px;
   height: 400px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
+  @media screen and (max-width: $media-medium) {
+    height: 350px;
+  }
 }
 
 /* This container is needed to position the front and back side */
@@ -147,9 +159,17 @@ const iFrameData = computed (() => {
   font-family: $normal;
   font-weight: 400;
 
+  @media screen and (max-width: $media-medium) {
+    height: 350px;
+  }
+
   .title {
     font-family: $cursive;
     font-size: 40px;
+
+    @media screen and (max-width: $media-medium) {
+      font-size: 32px;
+    }
   }
 
   .separator {
@@ -164,9 +184,17 @@ const iFrameData = computed (() => {
     align-items: center;
     font-size: 20px;
 
+    @media screen and (max-width: $media-medium) {
+      font-size: 16px;
+    }
+
     &__date {
       font-weight: 700;
       font-size: 64px;
+
+      @media screen and (max-width: $media-medium) {
+        font-size: 48px;
+      }
     }
 
     .date-wrapper-top {
@@ -183,6 +211,10 @@ const iFrameData = computed (() => {
 
   .time {
     font-size: 16px;
+
+    @media screen and (max-width: $media-medium) {
+      font-size: 14px;
+    }
   }
 
   .address-wrapper {
@@ -190,6 +222,10 @@ const iFrameData = computed (() => {
     flex-direction: column;
     align-items: center;
     font-size: 14px;
+
+    @media screen and (max-width: $media-medium) {
+      font-size: 12px;
+    }
 
     .address {
       display: flex;

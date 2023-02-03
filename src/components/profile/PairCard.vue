@@ -1,37 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
+interface Profile {
+  nickname: string
+  name: string
+  father: string
+  mother: string
+}
 const props = defineProps<{
   gender: 'male' | 'female'
+  profile: Profile
 }>()
-
-const groomNickname = import.meta.env.VITE_GROOM_NICKNAME
-const groomName = import.meta.env.VITE_GROOM_FULLNAME
-const groomFather = import.meta.env.VITE_GROOM_FATHER
-const groomMother = import.meta.env.VITE_GROOM_MOTHER
-const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
-const brideName = import.meta.env.VITE_BRIDE_FULLNAME
-const brideFather = import.meta.env.VITE_BRIDE_FATHER
-const brideMother = import.meta.env.VITE_BRIDE_MOTHER
-
-const brides = {
-  male: {
-    name: groomName,
-    nickname: groomNickname,
-    father: groomFather,
-    mother: groomMother
-  },
-  female: {
-    name: brideName,
-    nickname: brideNickname,
-    father: brideFather,
-    mother: brideMother
-  }
-} as const
-
-const profile = computed(() => {
-  return brides[props.gender]
-})
 
 const getTitle = (gender: string): string => {
   return gender === 'male' ? 'Putra' : 'Putri'
@@ -41,10 +18,12 @@ const getTitle = (gender: string): string => {
 <template>
   <div>
     <div class="pair-container">
-      <h1 class="nickname mb-5">{{ profile.nickname }}</h1>
-      <h2 class="name mb-5">{{ profile.name }}</h2>
-      <p class="title mb-5">{{ getTitle(props.gender) }} dari Pasangan</p>
-      <p class="parents">Bapak {{ profile.father }} & Ibu {{ profile.mother }}</p>
+      <h1 class="nickname mb-5 responsive">{{ profile.nickname }}</h1>
+      <h2 class="name mb-5 responsive">{{ profile.name }}</h2>
+      <p class="title mb-5 responsive">{{ getTitle(props.gender) }} dari Pasangan</p>
+      <p class="parents">
+        Bapak {{ profile.father }} & Ibu {{ profile.mother }}
+      </p>
     </div>
   </div>
 </template>
@@ -69,16 +48,28 @@ const getTitle = (gender: string): string => {
   .name {
     font-weight: 700;
     font-size: 24px;
+
+    @media screen and (max-width: $media-medium) {
+      font-size: 20px;
+    }
   }
 
   .title {
     font-weight: 400;
     font-size: 16px;
+
+    @media screen and (max-width: $media-medium) {
+      font-size: 14px;
+    }
   }
 
   .parents {
     font-weight: 700;
     font-size: 16px;
+
+    @media screen and (max-width: $media-medium) {
+      font-size: 14px;
+    }
   }
 }
 </style>

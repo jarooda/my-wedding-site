@@ -3,7 +3,7 @@ import EventCard from '@/components/event/EventCard.vue'
 </script>
 
 <template>
-  <div class="event-wrapper">
+  <div class="event-wrapper mt-7">
     <EventCard title="akad" date="first" />
     <EventCard title="tasyakuran" date="second" />
   </div>
@@ -12,7 +12,9 @@ import EventCard from '@/components/event/EventCard.vue'
 <style scoped lang="scss">
 .event-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  width: 60%;
+  align-items: center;
+  gap: 32px;
 }
 </style>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 interface ImagesProps {
   img: any
-  isPortrait: boolean
 }
 
 const props = defineProps<{
   isReversed?: boolean
+  isPortraid?: boolean
   images: ImagesProps[]
 }>()
 </script>
@@ -14,10 +14,10 @@ const props = defineProps<{
   <section class="carousel-wrapper">
     <article class="carousel" :class="isReversed ? 'reverse' : ''">
       <ul v-for="index in 2" :key="index" class="carousel-background">
-        <li v-for="(image, idx) in props.images" :key="idx + 999">
+        <li v-for="(image, idx) in props.images" :key="idx + 999" class="my-5 mx-3">
           <div class="dots left top" />
           <div class="dots right top" />
-          <template v-if="image.isPortrait">
+          <!--<template>
             <div class="dots left top-quarter" />
             <div class="dots right top-quarter" />
             <div class="dots left middle" />
@@ -25,14 +25,17 @@ const props = defineProps<{
             <div class="dots left bottom-quarter" />
             <div class="dots right bottom-quarter" />
           </template>
-          <template v-else>
-            <div class="dots left middle" />
-            <div class="dots right middle" />
-          </template>
+          <template>
+          </template>-->
+          <div class="dots middle top" />
+          <div class="dots middle bottom" />
           <div class="dots left bottom" />
           <div class="dots right bottom" />
-          <div class="image-overlay" />
-          <img class="image" :src="image.img" alt="Carousel Image" />
+          <img
+            class="image"
+            :src="image.img"
+            alt="Carousel Image"
+          />
         </li>
       </ul>
     </article>
@@ -41,8 +44,7 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .carousel-wrapper {
-  width: 360px;
-  height: 100vh;
+  width: 100%;
   overflow: hidden;
 
   &:hover {
@@ -54,71 +56,52 @@ const props = defineProps<{
 
   .carousel {
     display: flex;
-    flex-direction: column;
-    width: 360px;
-    animation: bannerMove 10s linear infinite;
+    width: 300%;
+    animation: bannerMove 5s linear infinite;
   }
   .reverse {
-    animation: bannerMoveReverse 10s linear infinite;
+    animation: bannerMoveReverse 5s linear infinite;
   }
 }
 .image {
-  display: block;
-  width: 280px;
-  margin-top: 12px;
-  margin-bottom: 12px;
   border-radius: 5px;
-}
-
-.image-overlay {
-  position: absolute;
+  display: block;
   width: 100%;
-  height: 100%;
-  z-index: 1;
+  pointer-events: none;
 }
 
 .dots {
   z-index: 1;
-  width: 28px;
-  height: 10px;
+  width: 14px;
+  height: 5px;
   background-color: $color-background;
   position: absolute;
   border-radius: 10px;
 }
 
 .left {
-  left: -34px;
+  left: 0;
 }
 
 .right {
-  right: -34px;
+  right: 0;
 }
 
 .top {
-  top: 12px;
-}
-
-.top-quarter {
-  top: 25%;
+  top: -10px;
 }
 
 .middle {
-  top: 50%;
-}
-
-.bottom-quarter {
-  bottom: 25%;
+  left: calc(50% - 7px);
 }
 
 .bottom {
-  bottom: 12px;
+  bottom: -10px;
 }
 
 .carousel-background {
   background-color: $color-text;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   list-style-type: none;
   padding-left: 0;
   margin: 0;
@@ -126,19 +109,19 @@ const props = defineProps<{
 
 @keyframes bannerMove {
   0% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
   100% {
-    transform: translateY(-50%);
+    transform: translateX(-50%);
   }
 }
 
 @keyframes bannerMoveReverse {
   0% {
-    transform: translateY(-50%);
+    transform: translateX(-50%);
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 </style>
