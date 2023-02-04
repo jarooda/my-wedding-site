@@ -8,13 +8,14 @@ declare type Invitee = {
   isGroup: boolean
 }
 
+const invitee = reactive<Invitee>({
+  name: '',
+  slug: '',
+  inviter: '',
+  isGroup: false
+})
+
 export const useUserStore = defineStore('user', () => {
-  const invitee = reactive<Invitee>({
-    name: '',
-    slug: '',
-    inviter: '',
-    isGroup: false
-  })
 
   function assignInvitee(payload: Invitee) {
     invitee.name = payload.name

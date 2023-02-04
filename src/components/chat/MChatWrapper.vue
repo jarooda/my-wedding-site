@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useFirebase } from '@/composable/useFirebase'
+import { useUserStore } from '@/stores/user'
 
 import ChatList from '@/components/chat/ChatList.vue'
 import ChatInput from '@/components/chat/ChatInput.vue'
 
-const { writeDB, readDB } = useFirebase()
+const { invitee } = useUserStore()
+
+const { writeDB, readDB, parseData } = useFirebase()
 const messages = ref<any>([])
 
 const getMessage = async () => {
   const path = '/chats/'
   const db = await readDB(path)
-  messages.value = db.reverse()
+  const parsedData = parseData(db)
+  messages.value = parsedData.reverse()
 }
 
 const sendMessage = async (payload: any) => {  
@@ -27,7 +31,7 @@ onMounted(() => {
 
 <template>
   <div class="chat-wrapper p-5">
-    <ChatInput @send="sendMessage" />
+    <ChatInput v-if="invitee.name" @send="sendMessage" />
     <ChatList :messages="messages" />
   </div>
 </template>

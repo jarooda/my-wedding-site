@@ -41,7 +41,7 @@ const readDatabase = async (path:string) => {
 
   const snapshot = await get(getListRef)
   const data = snapshot.val() || []
-  return parseData(data)
+  return data
 }
 
 export function useFirebase () {
@@ -51,6 +51,7 @@ export function useFirebase () {
 
   return reactive({
     writeDB: writeDatabase,
-    readDB: readDatabase
+    readDB: readDatabase,
+    parseData
   })
 }

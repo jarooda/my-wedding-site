@@ -1,57 +1,27 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-const props = defineProps<{
-  title: 'akad' | 'tasyakuran'
-  date: 'first' | 'second'
+import { ref } from 'vue'
+
+interface EventData {
+  title: string
+  date: {
+    date: string
+    day: string
+    month: string
+    year: string
+  }
+  time: string
+  place: {
+    address: string
+    region: string
+  }
+  gmaps: string
+}
+
+defineProps<{
+  eventData: EventData
 }>()
 
-const cardTitle = computed(() => {
-  if (props.title === 'akad') {
-    return 'Akad Nikah'
-  } else {
-    return 'Tasyakuran'
-  }
-})
-
-const fullDate = computed(() => {
-  if (props.date === 'first') {
-    const [date, day, month, year] = import.meta.env.VITE_DATE_FIRST.split(' ')
-    return { date, day, month, year }
-  } else {
-    const [date, day, month, year] = import.meta.env.VITE_DATE_SECOND.split(' ')
-    return { date, day, month, year }
-  }
-})
-
-const time = computed(() => {
-  if (props.title === 'akad') {
-    return import.meta.env.VITE_TIME_FIRST
-  } else if (props.date === 'first') {
-    return import.meta.env.VITE_TIME_SECOND
-  } else {
-    return import.meta.env.VITE_TIME_THIRD
-  }
-})
-
-const place = computed(() => {
-  if (props.date === 'first') {
-    const [address, region] = import.meta.env.VITE_ADDRESS_FIRST.split('-')
-    return { address, region }
-  } else {
-    const [address, region] = import.meta.env.VITE_ADDRESS_SECOND.split('-')
-    return { address, region }
-  }
-})
-
 const isFlipping = ref(false)
-
-const iFrameData = computed(() => {
-  if (props.date === 'first') {
-    return import.meta.env.VITE_GMAPS_FIRST
-  } else {
-    return import.meta.env.VITE_GMAPS_SECOND
-  }
-})
 </script>
 
 <template>
@@ -59,26 +29,26 @@ const iFrameData = computed(() => {
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <div class="event-card-wrapper">
-          <h1 class="title mb-5 responsive">{{ cardTitle }}</h1>
+          <h1 class="title mb-5 responsive">{{ eventData.title }}</h1>
           <div class="separator" />
           <div class="date-wrapper">
             <div class="date-wrapper-top">
-              <h2 class="date-wrapper__date mr-2">{{ fullDate.date }}</h2>
+              <h2 class="date-wrapper__date mr-2">{{ eventData.date.date }}</h2>
               <div class="date-wrapper-right">
-                <h3>{{ fullDate.day }}</h3>
-                <h3>{{ fullDate.month }}</h3>
+                <h3>{{ eventData.date.day }}</h3>
+                <h3>{{ eventData.date.month }}</h3>
               </div>
             </div>
-            <h3 class="mt--3">{{ fullDate.year }}</h3>
+            <h3 class="mt--3">{{ eventData.date.year }}</h3>
           </div>
           <div class="separator mt-3" />
-          <p class="time mt-6 responsive">{{ time }}</p>
+          <p class="time mt-6 responsive">{{ eventData.time }}</p>
           <div class="address-wrapper mt-6 responsive">
             <div class="address mb-2 responsive">
               <img src="@/assets/icons/marker.svg" alt="marker" class="mr-3" />
-              <p>{{ place.address }}</p>
+              <p>{{ eventData.place.address }}</p>
             </div>
-            <p>{{ place.region }}</p>
+            <p>{{ eventData.place.region }}</p>
           </div>
           <button
             class="button-primary naked-button mt-6 responsive"
@@ -90,7 +60,7 @@ const iFrameData = computed(() => {
       </div>
       <div class="flip-card-back">
         <div class="event-card-wrapper">
-          <div v-html="iFrameData" />
+          <div v-html="eventData.gmaps" />
           <button
             class="button-primary naked-button mt-6 responsive"
             @click="isFlipping = false"

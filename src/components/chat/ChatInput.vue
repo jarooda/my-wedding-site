@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useDate } from '@/composable/useDate'
+import { useUserStore } from '@/stores/user'
 
 const emit = defineEmits(['send'])
 const { convertToUnix } = useDate()
+const { invitee } = useUserStore()
 const message = ref<string>('')
 const messageCount = computed(() => message.value.length)
 const minMessageLimit = 5
@@ -20,8 +22,8 @@ const sendMessage = () => {
     message: message.value,
     timestamp: convertToUnix(Date.now()),
     color: getRandomColor(),
-    name: 'Jajal Jajal',
-    isGroup: false
+    name: invitee.name,
+    isGroup: invitee.isGroup
   }
   emit('send', payload)
 

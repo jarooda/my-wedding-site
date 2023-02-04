@@ -9,7 +9,10 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     }
-  ]
+  ],
+  scrollBehavior () {
+    return { top: 0 }
+  }
 })
 
 export default router

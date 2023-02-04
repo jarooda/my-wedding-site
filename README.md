@@ -5,7 +5,7 @@
 - [x] Create Desktop Version
 - [x] Create Mobile Version
 - [x] Create Chatbox
-- [ ] Implement Guest Query
+- [x] Implement Guest Query
 - [ ] Improve Meta Tag
 - [ ] Improve Animation
 
