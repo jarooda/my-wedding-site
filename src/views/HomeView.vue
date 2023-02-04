@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue'
 import isMobile from 'ismobilejs'
 import { useRoute } from 'vue-router'
 import { useFirebase } from '@/composable/useFirebase'
 import { useUserStore } from '@/stores/user'
 
-import DesktopContainer from '@/components/DesktopContainer.vue'
-import MobileContainer from '@/components/MobileContainer.vue'
+const DesktopContainer = defineAsyncComponent(
+  () => import('@/components/DesktopContainer.vue')
+)
+const MobileContainer = defineAsyncComponent(
+  () => import('@/components/MobileContainer.vue')
+)
 
 const isMobileDevice = isMobile(window.navigator.userAgent).any
 const { readDB } = useFirebase()
@@ -24,7 +29,6 @@ const getGuestInfo = async (identifier: string) => {
       slug: identifier
     })
   }
-  
 }
 
 if (route.query && route.query.to) {

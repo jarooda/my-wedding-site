@@ -14,7 +14,11 @@ const props = defineProps<{
   <section class="carousel-wrapper">
     <article class="carousel" :class="isReversed ? 'reverse' : ''">
       <ul v-for="index in 2" :key="index" class="carousel-background">
-        <li v-for="(image, idx) in props.images" :key="idx + 999" class="my-5 mx-3">
+        <li
+          v-for="(image, idx) in props.images"
+          :key="idx + 999"
+          class="my-5 mx-3"
+        >
           <div class="dots left top" />
           <div class="dots right top" />
           <!--<template>
@@ -31,11 +35,7 @@ const props = defineProps<{
           <div class="dots middle bottom" />
           <div class="dots left bottom" />
           <div class="dots right bottom" />
-          <img
-            class="image"
-            :src="image.img"
-            alt="Carousel Image"
-          />
+          <img class="image" :src="image.img" alt="Carousel Image" />
         </li>
       </ul>
     </article>

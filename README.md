@@ -6,7 +6,7 @@
 - [x] Create Mobile Version
 - [x] Create Chatbox
 - [x] Implement Guest Query
-- [ ] Improve Meta Tag
+- [x] Improve Meta Tag
 - [ ] Improve Animation
 
 This template should help get you started developing with Vue 3 in Vite.

@@ -141,7 +141,6 @@ onMounted(() => {
     .add(profile2())
     .add(profile3())
 })
-
 </script>
 
 <template>

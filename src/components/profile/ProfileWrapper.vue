@@ -25,7 +25,6 @@ const bride = ref({
   father: brideFather,
   mother: brideMother
 })
-
 </script>
 
 <template>

@@ -16,7 +16,6 @@ const invitee = reactive<Invitee>({
 })
 
 export const useUserStore = defineStore('user', () => {
-
   function assignInvitee(payload: Invitee) {
     invitee.name = payload.name
     invitee.slug = payload.slug

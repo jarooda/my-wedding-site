@@ -8,7 +8,6 @@ import TheFooter from '@/components/TheFooter.vue'
 
 const groomNickname = import.meta.env.VITE_GROOM_NICKNAME
 const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
-
 </script>
 
 <template>

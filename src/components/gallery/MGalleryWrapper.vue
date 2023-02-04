@@ -12,22 +12,14 @@ import Image8 from '@/assets/photos/img-8.webp'
 import Image9 from '@/assets/photos/img-9.webp'
 import Image10 from '@/assets/photos/img-10.webp'
 
-const lists1 = [
-  { img: Image1 },
-  { img: Image2 },
-  { img: Image3 }
-]
+const lists1 = [{ img: Image1 }, { img: Image2 }, { img: Image3 }]
 const lists2 = [
   { img: Image4 },
   { img: Image5 },
   { img: Image6 },
   { img: Image10 }
 ]
-const lists3 = [
-  { img: Image7 },
-  { img: Image8 },
-  { img: Image9 }
-]
+const lists3 = [{ img: Image7 }, { img: Image8 }, { img: Image9 }]
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, set, push, onValue, get } from 'firebase/database'
+import { getDatabase, ref, set, push, get } from 'firebase/database'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -20,13 +20,13 @@ const initFirebase = () => {
   database = getDatabase(app)
 }
 
-const writeDatabase = async (path:string, data:any) => {
+const writeDatabase = async (path: string, data: any) => {
   const postListRef = ref(database, path)
   const newPostRef = push(postListRef)
   await set(newPostRef, data)
 }
 
-const parseData = (data:any) => {
+const parseData = (data: any) => {
   const parsedData = Object.keys(data).map((key) => {
     return {
       id: key,
@@ -36,7 +36,7 @@ const parseData = (data:any) => {
   return parsedData
 }
 
-const readDatabase = async (path:string) => {
+const readDatabase = async (path: string) => {
   const getListRef = ref(database, path)
 
   const snapshot = await get(getListRef)
@@ -44,7 +44,7 @@ const readDatabase = async (path:string) => {
   return data
 }
 
-export function useFirebase () {
+export function useFirebase() {
   if (!app) {
     initFirebase()
   }

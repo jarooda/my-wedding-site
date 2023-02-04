@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView
     }
   ],
-  scrollBehavior () {
+  scrollBehavior() {
     return { top: 0 }
   }
 })

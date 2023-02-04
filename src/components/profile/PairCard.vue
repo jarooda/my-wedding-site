@@ -20,7 +20,9 @@ const getTitle = (gender: string): string => {
     <div class="pair-container">
       <h1 class="nickname mb-5 responsive">{{ profile.nickname }}</h1>
       <h2 class="name mb-5 responsive">{{ profile.name }}</h2>
-      <p class="title mb-5 responsive">{{ getTitle(props.gender) }} dari Pasangan</p>
+      <p class="title mb-5 responsive">
+        {{ getTitle(props.gender) }} dari Pasangan
+      </p>
       <p class="parents">
         Bapak {{ profile.father }} & Ibu {{ profile.mother }}
       </p>

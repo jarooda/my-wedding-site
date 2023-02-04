@@ -13,8 +13,16 @@ const { convertToHuman } = useDate()
     <div v-if="messages.length === 0" class="no-messages">
       <p>No message yet.</p>
     </div>
-    <div v-else v-for="message in messages" :key="message.id" class="chat-list__item mb-4">
-      <p class="chat-list__item-name"><span v-if="message.isGroup">Someone from </span>{{ message.name }} <span>say:</span></p>
+    <div
+      v-else
+      v-for="message in messages"
+      :key="message.id"
+      class="chat-list__item mb-4"
+    >
+      <p class="chat-list__item-name">
+        <span v-if="message.isGroup">Someone from </span>{{ message.name }}
+        <span>say:</span>
+      </p>
       <div class="chat-list__item-message p-4" :class="message.color">
         <p>{{ message.message }}</p>
         <div class="timestamp-wrapper mt-3">
@@ -48,12 +56,12 @@ const { convertToHuman } = useDate()
     font-family: $normal;
     font-size: 14px;
     color: $color-text;
-  
+
     &-name {
       font-weight: 600;
       margin-bottom: 8px;
     }
-    
+
     &-message {
       font-weight: 400;
       border-radius: 10px;
