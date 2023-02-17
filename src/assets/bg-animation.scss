@@ -1,0 +1,128 @@
+.bg-1 {
+  background:
+  url(@/assets/background/wave.svg) top -90vh left -40vw repeat-y;
+  animation-name: appeared, from-left;
+}
+
+.bg-2 {
+  background:
+  url(@/assets/background/gingko-r.svg) top 100px left calc(100vw - 300px) no-repeat;
+  animation-name: appeared, from-top;
+}
+
+.bg-3 {
+  background:
+  url(@/assets/background/gingko.svg) bottom 100px left calc(100vw - 500px) no-repeat;
+  animation-name: appeared, from-bottom;
+}
+
+.bg-4 {
+  background:
+  url(@/assets/background/gingko-r.svg) bottom 10px left calc(100vw - 100px) no-repeat;
+  animation-name: appeared, from-right;
+}
+
+.bg-5 {
+  background:
+  url(@/assets/background/gingko.svg) top 100px left calc(100vw + 100px) no-repeat,
+  url(@/assets/background/gingko-r.svg) top 140px left calc(200vw - 100px) no-repeat,
+  url(@/assets/background/wave.svg) top 0 left calc(100vw) repeat-y;
+}
+
+.bg-6 {
+  background:
+  url(@/assets/background/gingko.svg) bottom 20px left calc(200vw) no-repeat,
+  url(@/assets/background/gingko-r.svg) top 10px left calc(300vw - 140px) no-repeat,
+  url(@/assets/background/wave.svg) top 50% left calc(200vw - 50px) repeat-y;
+}
+
+.bg-7 {
+  background:
+  url(@/assets/background/gingko.svg) bottom 30px left calc(400vw + 80px) no-repeat,
+  url(@/assets/background/gingko-r.svg) top 290px left calc(400vw + 240px) no-repeat,
+  url(@/assets/background/wave.svg) top 50% left calc(430vw) repeat-y;
+}
+
+.bg-m-1 {
+  background:
+  url(@/assets/background/wave.svg) top 0 left -40px repeat-y;
+}
+
+.bg-m-2 {
+  background:
+  url(@/assets/background/gingko.svg) top 80px left 30px no-repeat;
+}
+
+.bg-m-3 {
+  background:
+  url(@/assets/background/gingko-r.svg) top calc(100vh + 400px) left 30px no-repeat;
+}
+
+.bg-m-4 {
+  background:
+  url(@/assets/background/gingko.svg) top calc(200vh + 400px) left 30px no-repeat;
+}
+
+.content-background {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+
+  @media screen and (max-width: $media-medium) {
+    animation-duration: 0s;
+  }
+}
+
+@-webkit-keyframes from-left {
+  0% {
+    -webkit-transform: translateX(-400px);
+    transform: translateX(-400px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes from-top {
+  0% {
+    -webkit-transform: translateY(-400px);
+    transform: translateY(-400px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes from-right {
+  0% {
+    -webkit-transform: translateX(400px);
+    transform: translateX(400px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes from-bottom {
+  0% {
+    -webkit-transform: translateY(400px);
+    transform: translateY(400px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes appeared {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

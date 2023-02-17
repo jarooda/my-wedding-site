@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 import isMobile from 'ismobilejs'
 import { useRoute } from 'vue-router'
 import { useFirebase } from '@/composable/useFirebase'
 import { useUserStore } from '@/stores/user'
 
+import InitScreen from '@/components/title/InitScreen.vue'
 const DesktopContainer = defineAsyncComponent(
   () => import('@/components/DesktopContainer.vue')
 )
@@ -34,9 +35,14 @@ const getGuestInfo = async (identifier: string) => {
 if (route.query && route.query.to) {
   getGuestInfo(route.query.to as string)
 }
+
+const isInit = ref(true)
 </script>
 
 <template>
-  <MobileContainer v-if="isMobileDevice" />
-  <DesktopContainer v-else />
+  <InitScreen v-if="isInit" @open="isInit = false" />
+  <template v-if="!isInit">
+    <MobileContainer v-if="isMobileDevice" />
+    <DesktopContainer v-else />
+  </template>
 </template>

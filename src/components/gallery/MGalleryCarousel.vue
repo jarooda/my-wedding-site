@@ -21,16 +21,6 @@ const props = defineProps<{
         >
           <div class="dots left top" />
           <div class="dots right top" />
-          <!--<template>
-            <div class="dots left top-quarter" />
-            <div class="dots right top-quarter" />
-            <div class="dots left middle" />
-            <div class="dots right middle" />
-            <div class="dots left bottom-quarter" />
-            <div class="dots right bottom-quarter" />
-          </template>
-          <template>
-          </template>-->
           <div class="dots middle top" />
           <div class="dots middle bottom" />
           <div class="dots left bottom" />

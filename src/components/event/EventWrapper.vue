@@ -29,7 +29,7 @@ const { akad, brideEvent, groomEvent } = useParseEvent()
 .event-wrapper {
   display: flex;
   justify-content: center;
-  gap: 128px;
+  gap: 64px;
   width: 100%;
 }
 </style>

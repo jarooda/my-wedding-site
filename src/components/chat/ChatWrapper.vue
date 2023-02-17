@@ -18,8 +18,8 @@ const getMessage = async () => {
   messages.value = parsedData.reverse()
 }
 
-const sendMessage = async (payload: any) => {
-  const path = '/chats/'
+const sendMessage = async (payload: any, date: string) => {
+  const path = '/chats/' + date 
   await writeDB(path, payload)
   getMessage()
 }
@@ -31,8 +31,8 @@ onMounted(() => {
 
 <template>
   <div class="chat-wrapper pt-11">
-    <ChatList :messages="messages" />
     <ChatInput v-if="invitee.name" @send="sendMessage" />
+    <ChatList :messages="messages" />
   </div>
 </template>
 

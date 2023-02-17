@@ -10,6 +10,7 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .heading-title {
+  z-index: 2;
   font-family: $cursive;
   font-size: 128px;
 

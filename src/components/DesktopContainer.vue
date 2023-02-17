@@ -4,6 +4,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import HeadingTitle from '@/components/title/HeadingTitle.vue'
+import KittenComponent from '@/components/kitten/Kitten.vue'
+import BackgroundMusic from '@/components/title/BackgroundMusic.vue'
 import ProfileWrapper from '@/components/profile/ProfileWrapper.vue'
 import EventWrapper from '@/components/event/EventWrapper.vue'
 import GalleryWrapper from '@/components/gallery/GalleryWrapper.vue'
@@ -41,123 +43,86 @@ onMounted(() => {
       start: start || `left ${START_POS - 100}px`,
       end: 'left -1px',
       scrub: 1,
-      containerAnimation: scrollTween,
-      markers: true
+      containerAnimation: scrollTween
     }
   }
 
-  function getScrollTriggerRight(trigger: string, end?: string) {
-    return {
-      trigger: trigger,
-      start: 'left 80%',
-      end: end || 'left 40%',
-      scrub: 1,
-      containerAnimation: scrollTween,
-      markers: true
+  function timelineFactory(gsapConfig: any, payload: any) {
+    const tl = gsapConfig.timeline({
+      scrollTrigger: payload.scrollTrigger(payload.identifier, payload.positon)
+    })
+    if (payload.isFrom) {
+      tl.from(payload.identifier, payload.config)
+    } else {
+      tl.to(payload.identifier, payload.config)
     }
+    return tl
   }
 
   // SECTION TITLE - START ANIMATION
-  function title1() {
-    const t1 = gsap.timeline({
-      scrollTrigger: getScrollTriggerLeft('#title-text-1')
+  function title1 (gsapConfig: any) {
+    return timelineFactory(gsapConfig, {
+      scrollTrigger: getScrollTriggerLeft,
+      identifier: '#title-text-1',
+      isFrom: false,
+      config: {
+        opacity: 0,
+        duration: 10
+      }
     })
-    t1.to('#title-text-1', {
-      opacity: 0,
-      duration: 10
-    })
-    return t1
   }
-  function title2() {
-    const t2 = gsap.timeline({
-      scrollTrigger: getScrollTriggerLeft('#title-text-2')
+  function title2 (gsapConfig: any) {
+    return timelineFactory(gsapConfig, {
+      scrollTrigger: getScrollTriggerLeft,
+      identifier: '#title-text-2',
+      isFrom: false,
+      config: {
+        opacity: 0,
+        duration: 10
+      }
     })
-    t2.to('#title-text-2', {
-      opacity: 0,
-      duration: 10
-    })
-    return t2
   }
-  function title3() {
-    const t3 = gsap.timeline({
-      scrollTrigger: getScrollTriggerLeft('#title-text-3')
+  function title3 (gsapConfig: any) {
+    return timelineFactory(gsapConfig, {
+      scrollTrigger: getScrollTriggerLeft,
+      identifier: '#title-text-3',
+      isFrom: false,
+      config: {
+        opacity: 0,
+        duration: 10
+      }
     })
-    t3.to('#title-text-3', {
-      opacity: 0,
-      duration: 10
-    })
-    return t3
   }
   // SECTION TITLE - END ANIMATION
 
-  // SECTION PROFILE - START ANIMATION
-  function profile1() {
-    const t4 = gsap.timeline({
-      scrollTrigger: getScrollTriggerRight('#profile-salaam', 'left 60%')
-    })
-    t4.from('#profile-salaam', {
-      opacity: 0,
-      top: -230,
-      right: -100,
-      duration: 4
-    })
-
-    return t4
-  }
-  function profile2() {
-    const t5 = gsap.timeline({
-      scrollTrigger: getScrollTriggerRight('#profile-greetings-1', 'left 50%')
-    })
-    t5.from('#profile-greetings-1', {
-      opacity: 0,
-      top: -230,
-      right: -100,
-      duration: 10
-    })
-
-    return t5
-  }
-  function profile3() {
-    const t6 = gsap.timeline({
-      scrollTrigger: getScrollTriggerRight('#profile-greetings-2')
-    })
-    t6.from('#profile-greetings-2', {
-      opacity: 0,
-      top: -230,
-      right: -100,
-      duration: 16
-    })
-
-    return t6
-  }
-  // SECTION PROFILE - END ANIMATION
-
   gsap
     .timeline()
-    .add(title1())
-    .add(title2())
-    .add(title3())
-    .add(profile1())
-    .add(profile2())
-    .add(profile3())
+    .add(title1(gsap))
+    .add(title2(gsap))
+    .add(title3(gsap))
 })
 </script>
 
 <template>
   <div class="main-container screen-container">
     <div ref="extraLongContainer" class="extra-long-container">
+      <BackgroundMusic />
+      <KittenComponent />
+      <template v-for="number in 7" :key="number">
+        <div :class="`content-background bg-${number}`" />
+      </template>
       <div class="section-container centered-flex">
         <HeadingTitle
           ref="leftCorner"
           id="title-text-1"
           :text="brideNickname"
-          class="mb-11 mr-10"
+          class="mb-11 mr-10 animate"
         />
-        <HeadingTitle id="title-text-2" text="&" />
+        <HeadingTitle id="title-text-2" text="&" class="animate" />
         <HeadingTitle
           id="title-text-3"
           :text="groomNickname"
-          class="mt-11 ml-10"
+          class="mt-11 ml-10 animate"
         />
       </div>
       <div class="section-container centered-flex profile-position">
@@ -178,6 +143,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/bg-animation.scss';
 $longScreen: 1440px;
 $height: 832px;
 
@@ -196,14 +162,15 @@ $height: 832px;
   height: 100%;
   position: relative;
   display: block;
-  background: $color-background url(@/assets/background/background.webp);
-  background-size: cover;
-
+  background-color: $color-background;
+  
   @media screen and (min-width: $longScreen) {
     width: calc($longScreen * 5);
   }
 }
+
 .section-container {
+  z-index: 2;
   width: 100vw;
   height: $height;
   position: absolute;
@@ -252,5 +219,62 @@ $height: 832px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+// ANIMATION
+.animate {
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}
+
+#title-text-1 {
+  animation-name: title-first;
+}
+
+#title-text-2 {
+  animation-name: title-third;
+}
+
+#title-text-3 {
+  animation-name: title-second;
+}
+
+@-webkit-keyframes title-first {
+  0% {
+    -webkit-transform: translateY(-400px) translateX(-400px);
+    transform: translateY(-400px) translateX(-400px);
+    opacity: 0;
+    scale: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+    scale: 1;
+  }
+}
+@-webkit-keyframes title-second {
+  0% {
+    -webkit-transform: translateY(400px) translateX(400px);
+    transform: translateY(400px) translateX(400px);
+    opacity: 0;
+    scale: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+    scale: 1;
+  }
+}
+@-webkit-keyframes title-third {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
 }
 </style>

@@ -1,0 +1,269 @@
+
+/* body */
+@keyframes turn_body_left {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.5, 1);
+  }
+}
+@keyframes turn_body_right {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.5, 1);
+  }
+}
+/* head */
+/* tail */
+@keyframes tail_motion {
+  0%,
+  100% {
+    left: -5px;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    left: -10px;
+    transform: rotate(-50deg) scale(-1, 1);
+  }
+}
+@keyframes tail_motion_alt {
+  0%,
+  100% {
+    left: 45px;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    left: 40px;
+    transform: rotate(50deg) scale(-1, 1);
+  }
+}
+/* legs */
+@keyframes walk {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes walk_alt {
+  0%,
+  100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+/* jump */
+/* .cat_wrapper.jump .cat.face_right .back_legs {
+  transform-origin: center;
+  transform: rotate(50deg);
+} */
+/* .cat_wrapper.jump .cat.face_left .back_legs {
+  transform-origin: center;
+  transform: rotate(-50deg);
+} */
+/* .cat_wrapper.jump .cat.face_right .front_legs {
+  transform-origin: center;
+  transform: rotate(-60deg);
+} */
+/* .cat_wrapper.jump .cat.face_left .front_legs {
+  transform-origin: center;
+  transform: rotate(60deg);
+} */
+/* .cat_wrapper.jump{
+  animation: jump forwards 1s;
+} */
+/* @keyframes jump {
+  0%, 100%  {bottom: 0px;}
+  50% {bottom: 200px;}
+} */
+/* @keyframes body_stand_right {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(-45deg);}
+} */
+/* @keyframes body_stand_left {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(45deg);}
+} */
+.outer_wrapper {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.wrapper {
+  position: absolute;
+  height: calc(100vh);
+  width: 100%;
+  top: 0;
+}
+.cat {
+  position: absolute;
+  bottom: 80px;
+  left: 100px;
+  height: 30px;
+  width: 60px;
+  transition: 1.5s;
+  transform-origin: center;
+  background-color: transparent;
+}
+.body {
+  position: absolute;
+  height: 30px;
+  width: 60px;
+}
+.face_left {
+  .body {
+    animation: turn_body_left forwards 0.5s;
+  }
+  .cat_head {
+    right: 22px;
+  }
+  .tail {
+    left: 45px;
+    animation: tail_motion_alt forwards 2s;
+  }
+  .leg {
+    svg {
+      transform: scale(-1, 1);
+    }
+  }
+  .front_legs {
+    right: 30px;
+  }
+  .back_legs {
+    left: 35px;
+  }
+}
+.face_right {
+  .body {
+    animation: turn_body_right forwards 0.5s;
+  }
+  .front_legs {
+    right: 0;
+  }
+  .back_legs {
+    left: 0;
+  }
+}
+.cat_head {
+  position: absolute;
+  height: 40px;
+  width: 48px;
+  right: -10px;
+  top: -30px;
+  transition: 0.5s;
+  z-index: 50;
+}
+.first_pose {
+  .cat_head {
+    right: 22px;
+  }
+  .tail {
+    left: 45px;
+    animation: tail_motion_alt forwards 2s;
+  }
+  .front_legs {
+    right: 30px;
+  }
+  .back_legs {
+    left: 35px;
+  }
+}
+.tail {
+  position: absolute;
+  top: -25px;
+  height: 36px;
+  width: 15px;
+  animation: tail_motion forwards 2s;
+  transform-origin: bottom right;
+}
+.leg {
+  position: absolute;
+  height: 20px;
+  width: 10px;
+  transform-origin: top center;
+}
+.front_legs {
+  position: absolute;
+  height: 30px;
+  transition: 0.7s;
+  width: 30px;
+  right: 0;
+}
+.back_legs {
+  position: absolute;
+  height: 30px;
+  transition: 0.7s;
+  width: 25px;
+  left: 0;
+}
+.one {
+  bottom: -15px;
+  right: 0;
+}
+.three {
+  bottom: -15px;
+  right: 0;
+}
+.two {
+  bottom: -15px;
+  left: 0px;
+}
+.four {
+  bottom: -15px;
+  left: 0px;
+}
+.one.walk {
+  animation: infinite 0.3s walk;
+}
+.three.walk {
+  animation: infinite 0.3s walk;
+}
+.two.walk {
+  animation: infinite 0.3s walk_alt;
+}
+.four.walk {
+  animation: infinite 0.3s walk_alt;
+}
+.cat_wrapper {
+  position: absolute;
+  bottom: 0;
+}
+.cat_wrapper.jump {
+  .one {
+    animation: infinite 0.3s walk;
+  }
+  .two {
+    animation: infinite 0.3s walk_alt;
+  }
+  .three {
+    animation: none;
+  }
+  .four {
+    animation: none;
+  }
+}
+.jump {
+  .face_left {
+    animation: forwards 0.5s body_stand_left;
+    transform-origin: right bottom;
+  }
+  .face_right {
+    animation: forwards 0.5s body_stand_right;
+    transform-origin: left bottom;
+  }
+}
+svg {
+  height: 100%;
+  width: 100%;
+}

@@ -13,6 +13,7 @@ html::-webkit-scrollbar {
 
 html {
   scrollbar-width: none;
+  background-color: #F0E9C5;
 }
 
 body {

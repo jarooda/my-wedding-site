@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { useDate } from '@/composable/useDate'
+import { useFirebase } from '@/composable/useFirebase'
 
 defineProps<{
   messages: any
 }>()
 
-const { convertToHuman } = useDate()
+const { parseData } = useFirebase()
+const { convertToHuman, parseDateAndMonth } = useDate()
+
+const getDirectories = (dir: any) => {
+  const parsedData = parseData(dir)
+  return parsedData.reverse()
+}
 </script>
 
 <template>
@@ -15,25 +22,37 @@ const { convertToHuman } = useDate()
     </div>
     <div
       v-else
-      v-for="message in messages"
-      :key="message.id"
+      v-for="(directory, index) in messages"
+      :key="index"
       class="chat-list__item mb-4"
     >
-      <p class="chat-list__item-name">
-        <span v-if="message.isGroup">Someone from </span>{{ message.name }}
-        <span>say:</span>
-      </p>
-      <div class="chat-list__item-message p-4" :class="message.color">
-        <p>{{ message.message }}</p>
-        <div class="timestamp-wrapper mt-3">
-          <span class="timestamp">{{ convertToHuman(message.timestamp) }}</span>
-        </div>
+      <div class="block">
+        <div class="text-divider">{{ parseDateAndMonth(directory.id) }}</div>
       </div>
+      <template
+        v-for="message in getDirectories(directory)"
+        :key="message.id"
+      >
+        <template v-if="message.name">
+          <div class="talk-bubble tri-right round btm-left-in border">
+            <div class="talktext chat-list__item-message">
+              <p class="chat-list__item-name">
+                <span v-if="message.isGroup">Seseorang dari </span>{{ message.name }}
+              </p>
+              <p>{{ message.message }}</p>
+              <div class="block">
+                <span class="timestamp">{{ convertToHuman(message.timestamp, 'HH.mm') }}</span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </template>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/bubble-chat.scss';
 .chat-list {
   width: 600px;
   max-height: 400px;
@@ -41,9 +60,13 @@ const { convertToHuman } = useDate()
   display: flex;
   flex-direction: column;
 
-  background: rgba(255, 252, 235, 0.8);
-  border: 1px solid $color-border;
-  border-radius: 10px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
 
   @media screen and (max-width: $media-medium) {
     width: 100%;
@@ -61,26 +84,19 @@ const { convertToHuman } = useDate()
       font-weight: 600;
       margin-bottom: 8px;
     }
-
+    
     &-message {
       font-weight: 400;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-
-      .timestamp-wrapper {
-        display: flex;
-        justify-content: flex-end;
-        border-top: 1px solid $color-border;
-
-        .timestamp {
-          font-size: 12px;
-          font-weight: 400;
-          margin-top: 8px;
-        }
-      }
     }
   }
+}
+
+.timestamp {
+  width: 100%;
+  text-align: end;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 8px;
 }
 
 .no-messages {
@@ -104,5 +120,27 @@ const { convertToHuman } = useDate()
 
 .yellow {
   background-color: $color-tertiary;
+}
+.text-divider {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  --text-divider-gap: 8px; // set a customizable gap between label and lines
+}
+
+.text-divider::before,
+.text-divider::after {
+  content: '';
+  height: 1px;
+  background-color: silver;
+  flex-grow: 1;
+}
+
+.text-divider::before {
+  margin-right: var(--text-divider-gap);
+}
+
+.text-divider::after {
+  margin-left: var(--text-divider-gap);
 }
 </style>

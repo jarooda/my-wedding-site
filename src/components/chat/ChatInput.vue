@@ -4,28 +4,22 @@ import { useDate } from '@/composable/useDate'
 import { useUserStore } from '@/stores/user'
 
 const emit = defineEmits(['send'])
-const { convertToUnix } = useDate()
+const { convertToUnix, getTodayDateAndMonth, parseDateAndMonth } = useDate()
 const { invitee } = useUserStore()
 const message = ref<string>('')
 const messageCount = computed(() => message.value.length)
 const minMessageLimit = 5
 const maxMessageLimit = 200
 
-const getRandomColor = () => {
-  const colors = ['red', 'green', 'yellow']
-  const random = Math.floor(Math.random() * colors.length)
-  return colors[random]
-}
-
 const sendMessage = () => {
+  const date = getTodayDateAndMonth()
   const payload = {
     message: message.value,
     timestamp: convertToUnix(Date.now()),
-    color: getRandomColor(),
     name: invitee.name,
     isGroup: invitee.isGroup
   }
-  emit('send', payload)
+  emit('send', payload, date)
 
   message.value = ''
 }
@@ -39,7 +33,7 @@ const isDisabled = computed(() => {
   <form class="chat-input" @submit.prevent="sendMessage">
     <textarea
       class="chat-textarea"
-      placeholder="Say your thought here..."
+      placeholder="Tulis ucapanmu disini..."
       v-model="message"
       :maxlength="maxMessageLimit"
       :minlength="minMessageLimit"
@@ -50,7 +44,7 @@ const isDisabled = computed(() => {
       class="block button-primary naked-button mt-3 responsive"
       :disabled="isDisabled"
     >
-      Send
+      Kirim
     </button>
   </form>
 </template>

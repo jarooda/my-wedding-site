@@ -35,11 +35,11 @@ const isFlipping = ref(false)
             <div class="date-wrapper-top">
               <h2 class="date-wrapper__date mr-2">{{ eventData.date.date }}</h2>
               <div class="date-wrapper-right">
-                <h3>{{ eventData.date.day }}</h3>
                 <h3>{{ eventData.date.month }}</h3>
+                <h3>{{ eventData.date.year }}</h3>
               </div>
             </div>
-            <h3 class="mt--3">{{ eventData.date.year }}</h3>
+            <h3 class="mt--3">{{ eventData.date.day }}</h3>
           </div>
           <div class="separator mt-3" />
           <p class="time mt-6 responsive">{{ eventData.time }}</p>
@@ -122,7 +122,7 @@ const isFlipping = ref(false)
   justify-content: center;
   width: 300px;
   height: 400px;
-  background: rgba(255, 252, 235, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid $color-border;
   box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
