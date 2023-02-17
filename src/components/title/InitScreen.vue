@@ -130,7 +130,7 @@ const isPlayMusic = computed({
   animation-name: title-second;
 }
 
-@-webkit-keyframes title-first {
+@keyframes title-first {
   0% {
     -webkit-transform: translateY(-400px) translateX(-400px);
     transform: translateY(-400px) translateX(-400px);
@@ -144,7 +144,7 @@ const isPlayMusic = computed({
     scale: 1;
   }
 }
-@-webkit-keyframes title-second {
+@keyframes title-second {
   0% {
     -webkit-transform: translateY(400px) translateX(400px);
     transform: translateY(400px) translateX(400px);
@@ -158,7 +158,7 @@ const isPlayMusic = computed({
     scale: 1;
   }
 }
-@-webkit-keyframes title-third {
+@keyframes title-third {
   0% {
     opacity: 0;
     scale: 0;
@@ -175,7 +175,7 @@ const isPlayMusic = computed({
   animation-iteration-count: 1;
 }
 
-@-webkit-keyframes transition-zoom-out-then-fade-out {
+@keyframes transition-zoom-out-then-fade-out {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);

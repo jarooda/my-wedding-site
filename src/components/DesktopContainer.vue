@@ -235,7 +235,7 @@ $height: 832px;
   animation-name: title-second;
 }
 
-@-webkit-keyframes title-first {
+@keyframes title-first {
   0% {
     -webkit-transform: translateY(-400px) translateX(-400px);
     transform: translateY(-400px) translateX(-400px);
@@ -249,7 +249,7 @@ $height: 832px;
     scale: 1;
   }
 }
-@-webkit-keyframes title-second {
+@keyframes title-second {
   0% {
     -webkit-transform: translateY(400px) translateX(400px);
     transform: translateY(400px) translateX(400px);
@@ -263,7 +263,7 @@ $height: 832px;
     scale: 1;
   }
 }
-@-webkit-keyframes title-third {
+@keyframes title-third {
   0% {
     opacity: 0;
     scale: 0;
