@@ -1,25 +1,25 @@
-declare interface Position {
+export interface Position {
   x?: string | number | null | undefined
   y?: string | number | null | undefined
 }
 
-declare interface CatClasses {
+export interface CatClasses {
   cat: boolean
   first_pose: boolean
   face_left?: boolean
   face_right?: boolean
 }
 
-declare interface LegClasses {
+export interface LegClasses {
   leg: boolean
   walk: boolean
 }
 
-declare interface CatStyles {
+export interface CatStyles {
   left?: string
   top?: string
 }
 
-declare interface HeadStyles {
+export interface HeadStyles {
   top?: string
 }

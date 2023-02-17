@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import HeadingTitle from '@/components/title/HeadingTitle.vue'
-import KittenComponent from '@/components/kitten/Kitten.vue'
+import KittenComponent from '@/components/kitten/TheKitten.vue'
 import BackgroundMusic from '@/components/title/BackgroundMusic.vue'
 import ProfileWrapper from '@/components/profile/ProfileWrapper.vue'
 import EventWrapper from '@/components/event/EventWrapper.vue'
@@ -60,7 +60,7 @@ onMounted(() => {
   }
 
   // SECTION TITLE - START ANIMATION
-  function title1 (gsapConfig: any) {
+  function title1(gsapConfig: any) {
     return timelineFactory(gsapConfig, {
       scrollTrigger: getScrollTriggerLeft,
       identifier: '#title-text-1',
@@ -71,7 +71,7 @@ onMounted(() => {
       }
     })
   }
-  function title2 (gsapConfig: any) {
+  function title2(gsapConfig: any) {
     return timelineFactory(gsapConfig, {
       scrollTrigger: getScrollTriggerLeft,
       identifier: '#title-text-2',
@@ -82,7 +82,7 @@ onMounted(() => {
       }
     })
   }
-  function title3 (gsapConfig: any) {
+  function title3(gsapConfig: any) {
     return timelineFactory(gsapConfig, {
       scrollTrigger: getScrollTriggerLeft,
       identifier: '#title-text-3',
@@ -95,11 +95,7 @@ onMounted(() => {
   }
   // SECTION TITLE - END ANIMATION
 
-  gsap
-    .timeline()
-    .add(title1(gsap))
-    .add(title2(gsap))
-    .add(title3(gsap))
+  gsap.timeline().add(title1(gsap)).add(title2(gsap)).add(title3(gsap))
 })
 </script>
 
@@ -163,7 +159,7 @@ $height: 832px;
   position: relative;
   display: block;
   background-color: $color-background;
-  
+
   @media screen and (min-width: $longScreen) {
     width: calc($longScreen * 5);
   }

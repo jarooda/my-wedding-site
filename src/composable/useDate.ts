@@ -6,10 +6,11 @@ export function useDate() {
     return Math.floor(new Date(date).getTime() / 1000)
   }
 
-  const convertToHuman = (unix: number, format: string = 'dd LLL yyyy, HH:mm') => {
-    return DateTime.fromSeconds(unix)
-      .setLocale('id')
-      .toFormat(format)
+  const convertToHuman = (
+    unix: number,
+    format: string = 'dd LLL yyyy, HH:mm'
+  ) => {
+    return DateTime.fromSeconds(unix).setLocale('id').toFormat(format)
   }
 
   const getTodayDateAndMonth = () => {

@@ -4,7 +4,7 @@ import { useDate } from '@/composable/useDate'
 import { useUserStore } from '@/stores/user'
 
 const emit = defineEmits(['send'])
-const { convertToUnix, getTodayDateAndMonth, parseDateAndMonth } = useDate()
+const { convertToUnix, getTodayDateAndMonth } = useDate()
 const { invitee } = useUserStore()
 const message = ref<string>('')
 const messageCount = computed(() => message.value.length)

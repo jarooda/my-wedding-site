@@ -5,7 +5,7 @@ import MEventWrapper from '@/components/event/MEventWrapper.vue'
 import MGalleryWrapper from '@/components/gallery/MGalleryWrapper.vue'
 import MChatWrapper from '@/components/chat/MChatWrapper.vue'
 import TheFooter from '@/components/TheFooter.vue'
-import KittenComponent from '@/components/kitten/Kitten.vue'
+import KittenComponent from '@/components/kitten/TheKitten.vue'
 import BackgroundMusic from '@/components/title/BackgroundMusic.vue'
 
 const groomNickname = import.meta.env.VITE_GROOM_NICKNAME

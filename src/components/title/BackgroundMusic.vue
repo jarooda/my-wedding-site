@@ -17,7 +17,7 @@ onMounted(() => {
 <template>
   <div class="bgm-wrapper">
     <audio ref="audio">
-      <source preload src="@/assets/bgm/music.mp3" type="audio/mpeg">
+      <source preload src="@/assets/bgm/music.mp3" type="audio/mpeg" />
     </audio>
   </div>
 </template>

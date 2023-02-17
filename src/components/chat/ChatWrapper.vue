@@ -19,7 +19,7 @@ const getMessage = async () => {
 }
 
 const sendMessage = async (payload: any, date: string) => {
-  const path = '/chats/' + date 
+  const path = '/chats/' + date
   await writeDB(path, payload)
   getMessage()
 }

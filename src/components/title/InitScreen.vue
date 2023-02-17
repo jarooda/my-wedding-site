@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import HeadingTitle from '@/components/title/HeadingTitle.vue'
-import TheGuest from '@/components/title/Guest.vue'
+import TheGuest from '@/components/title/TheGuest.vue'
 
 const emit = defineEmits(['open'])
 
@@ -28,7 +28,6 @@ const isPlayMusic = computed({
     localStorage.setItem('isPlayMusic', String(value))
   }
 })
-
 </script>
 
 <template>
@@ -54,7 +53,7 @@ const isPlayMusic = computed({
       <TheGuest @open="openInvitation" />
     </div>
     <div class="sound-setting">
-      <input type="checkbox" v-model="isPlayMusic" id="music" name="music">
+      <input type="checkbox" v-model="isPlayMusic" id="music" name="music" />
       <label for="music">Mainkan suara latar.</label>
     </div>
   </div>
@@ -76,7 +75,7 @@ const isPlayMusic = computed({
   gap: 8px;
   font-family: $normal;
   font-size: 12px;
-  accent-color: $color-primary
+  accent-color: $color-primary;
 }
 
 .guest {
@@ -86,7 +85,7 @@ const isPlayMusic = computed({
   z-index: 3;
   position: absolute;
   bottom: 20px;
-  
+
   @media screen and (max-width: $media-medium) {
     bottom: 10%;
   }
@@ -188,5 +187,4 @@ const isPlayMusic = computed({
     opacity: 0;
   }
 }
-
 </style>

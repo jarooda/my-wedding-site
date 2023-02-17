@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
+import type {
+  Position,
+  CatClasses,
+  LegClasses,
+  CatStyles,
+  HeadStyles
+} from '@/@types/kitten'
 
 // Components
 import {

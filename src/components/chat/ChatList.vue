@@ -29,19 +29,19 @@ const getDirectories = (dir: any) => {
       <div class="block">
         <div class="text-divider">{{ parseDateAndMonth(directory.id) }}</div>
       </div>
-      <template
-        v-for="message in getDirectories(directory)"
-        :key="message.id"
-      >
+      <template v-for="message in getDirectories(directory)" :key="message.id">
         <template v-if="message.name">
           <div class="talk-bubble tri-right round btm-left-in border">
             <div class="talktext chat-list__item-message">
               <p class="chat-list__item-name">
-                <span v-if="message.isGroup">Seseorang dari </span>{{ message.name }}
+                <span v-if="message.isGroup">Seseorang dari </span
+                >{{ message.name }}
               </p>
               <p>{{ message.message }}</p>
               <div class="block">
-                <span class="timestamp">{{ convertToHuman(message.timestamp, 'HH.mm') }}</span>
+                <span class="timestamp">{{
+                  convertToHuman(message.timestamp, 'HH.mm')
+                }}</span>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@ const getDirectories = (dir: any) => {
       font-weight: 600;
       margin-bottom: 8px;
     }
-    
+
     &-message {
       font-weight: 400;
     }
