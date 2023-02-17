@@ -40,13 +40,13 @@ const isPlayMusic = computed({
         ref="leftCorner"
         id="title-text-1"
         :text="brideNickname"
-        class="mb-11 mr-10 responsive animate"
+        class="mb-11 mr-10 animate"
       />
       <HeadingTitle id="title-text-2" text="&" class="animate" />
       <HeadingTitle
         id="title-text-3"
         :text="groomNickname"
-        class="mt-11 ml-10 responsive animate"
+        class="mt-11 ml-10 animate"
       />
     </div>
     <div class="guest">
@@ -61,6 +61,17 @@ const isPlayMusic = computed({
 
 <style scoped lang="scss">
 @import '@/assets/bg-animation.scss';
+
+@media screen and (max-width: $media-medium) {
+  .mt-11 {
+    margin-top: 24px;
+  }
+
+  .mb-11 {
+    margin-bottom: 24px;
+  }
+}
+
 .init-wrapper {
   width: 100vw;
   height: 100vh;

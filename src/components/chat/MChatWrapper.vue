@@ -18,8 +18,8 @@ const getMessage = async () => {
   messages.value = parsedData.reverse()
 }
 
-const sendMessage = async (payload: any) => {
-  const path = '/chats/'
+const sendMessage = async (payload: any, date: string) => {
+  const path = '/chats/' + date
   await writeDB(path, payload)
   getMessage()
 }
