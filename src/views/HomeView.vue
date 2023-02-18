@@ -22,14 +22,12 @@ const getGuestInfo = async (identifier: string) => {
   const path = `/guests/${identifier}`
   const user = await readDB(path)
 
-  if (user.inviter) {
-    assignInvitee({
-      name: user.name,
-      inviter: user.inviter,
-      isGroup: user.isGroup,
-      slug: identifier
-    })
-  }
+  assignInvitee({
+    name: user.name,
+    inviter: user.inviter,
+    isGroup: user.isGroup,
+    slug: identifier
+  })
 }
 
 if (route.query && route.query.to) {
