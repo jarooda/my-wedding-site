@@ -18,7 +18,7 @@ const getDirectories = (dir: any) => {
 <template>
   <div class="chat-list p-4">
     <div v-if="messages.length === 0" class="no-messages">
-      <p>No message yet.</p>
+      <p>Belum ada ucapan...</p>
     </div>
     <div
       v-else
