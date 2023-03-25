@@ -28,7 +28,7 @@ export function useParseEvent() {
   }
 
   const groomEvent = {
-    title: 'Ngunduh Mantu',
+    title: 'Tasyakuran',
     date: getDate(import.meta.env.VITE_DATE_THIRD),
     time: import.meta.env.VITE_TIME_THIRD,
     place: getPlace(import.meta.env.VITE_ADDRESS_THIRD),

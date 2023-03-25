@@ -17,7 +17,8 @@ const sendMessage = () => {
     message: message.value,
     timestamp: convertToUnix(Date.now()),
     name: invitee.name,
-    isGroup: invitee.isGroup
+    isGroup: invitee.isGroup,
+    slug: invitee.slug
   }
   emit('send', payload, date)
 

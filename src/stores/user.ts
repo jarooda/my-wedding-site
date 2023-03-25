@@ -6,13 +6,15 @@ declare type Invitee = {
   slug: string
   inviter: string
   isGroup: boolean
+  isGiftSender: boolean
 }
 
 const invitee = reactive<Invitee>({
   name: '',
   slug: '',
   inviter: '',
-  isGroup: false
+  isGroup: false,
+  isGiftSender: false
 })
 
 export const useUserStore = defineStore('user', () => {
@@ -21,6 +23,7 @@ export const useUserStore = defineStore('user', () => {
     invitee.slug = payload.slug
     invitee.inviter = payload.inviter
     invitee.isGroup = payload.isGroup
+    invitee.isGiftSender = payload.isGiftSender || false
   }
 
   return { invitee, assignInvitee }

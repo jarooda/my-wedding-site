@@ -5,6 +5,7 @@ import { useUserStore } from '@/stores/user'
 
 import ChatList from '@/components/chat/ChatList.vue'
 import ChatInput from '@/components/chat/ChatInput.vue'
+import BankAccount from '@/components/chat/BankAccount.vue'
 
 const { invitee } = useUserStore()
 
@@ -31,7 +32,10 @@ onMounted(() => {
 
 <template>
   <div class="chat-wrapper pt-11">
-    <ChatInput v-if="invitee.name" @send="sendMessage" />
+    <div>
+      <ChatInput v-if="invitee.name" @send="sendMessage" />
+      <BankAccount v-if="invitee.isGiftSender" class="mt-6" />
+    </div>
     <ChatList :messages="messages" />
   </div>
 </template>

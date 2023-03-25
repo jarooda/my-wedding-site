@@ -26,7 +26,8 @@ const getGuestInfo = async (identifier: string) => {
     name: user.name,
     inviter: user.inviter,
     isGroup: user.isGroup,
-    slug: identifier
+    slug: identifier,
+    isGiftSender: user.isGiftSender
   })
 }
 
