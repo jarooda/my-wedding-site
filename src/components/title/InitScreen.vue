@@ -60,7 +60,7 @@ const isPlayMusic = computed({
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/bg-animation.scss';
+@use '@/assets/bg-animation.scss';
 
 @media screen and (max-width: $media-medium) {
   .mt-11 {

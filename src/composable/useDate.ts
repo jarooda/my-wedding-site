@@ -1,9 +1,10 @@
 import { reactive } from 'vue'
 import { DateTime } from 'luxon'
+import { unix } from 'jalutils'
 
 export function useDate() {
   const convertToUnix = (date: any) => {
-    return Math.floor(new Date(date).getTime() / 1000)
+    return unix(date)
   }
 
   const convertToHuman = (
