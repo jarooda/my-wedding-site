@@ -139,7 +139,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/bg-animation.scss';
+@use '@/assets/bg-animation.scss';
 $longScreen: 1440px;
 $height: 832px;
 

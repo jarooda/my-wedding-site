@@ -35,7 +35,7 @@ const brideNickname = import.meta.env.VITE_BRIDE_NICKNAME
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/bg-animation.scss';
+@use '@/assets/bg-animation.scss';
 .main-container {
   position: relative;
   background-color: $color-background;

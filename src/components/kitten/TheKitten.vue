@@ -152,5 +152,5 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/kitten.scss';
+@use '@/assets/kitten.scss';
 </style>

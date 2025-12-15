@@ -1,3 +1,5 @@
+@use "media" as *;
+
 .bg-1 {
   background:
   url(@/assets/background/wave.svg) top -90vh left -40vw repeat-y;

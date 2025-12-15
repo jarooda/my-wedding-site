@@ -2,12 +2,12 @@ import { reactive } from 'vue'
 
 export function useParseEvent() {
   const getDate = (payload: string) => {
-    const [date, day, month, year] = payload.split(' ')
+    const [date = '', day = '', month = '', year = ''] = payload.split(' ')
     return { date, day, month, year }
   }
 
   const getPlace = (payload: string) => {
-    const [address, region] = payload.split('-')
+    const [address = '', region = ''] = payload.split('-')
     return { address, region }
   }
 

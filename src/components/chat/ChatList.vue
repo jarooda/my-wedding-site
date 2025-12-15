@@ -52,7 +52,7 @@ const getDirectories = (dir: any) => {
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/bubble-chat.scss';
+@use '@/assets/bubble-chat.scss';
 .chat-list {
   width: 600px;
   max-height: 400px;
